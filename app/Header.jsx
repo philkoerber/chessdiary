@@ -2,8 +2,8 @@ import React from 'react';
 
 function Header() {
     return (
-        <header className="bg-gray-900 py-4">
-            <nav className="flex items-center justify-between px-8">
+        <div className="bg-gray-900 py-4">
+            <div className="flex items-center justify-between px-8">
                 <div>
                     <h1 className="text-white text-2xl font-bold">Chess Web App</h1>
                 </div>
@@ -33,8 +33,8 @@ function Header() {
                         Profile
                     </a>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </div>
     );
 }
 
