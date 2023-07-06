@@ -1,19 +1,22 @@
 "use client"
 
 import React, { useEffect } from 'react';
-import {Chessboard, FEN, INPUT_EVENT_TYPE, MOVE_INPUT_MODE, COLOR} from "cm-chessboard"
+import { Chessboard, FEN, INPUT_EVENT_TYPE, MOVE_INPUT_MODE, COLOR } from "cm-chessboard"
+import "./cm-chessboard.css"
+import { Chess } from 'chess.js';
 
 
-function ChessboardParent(props) {
+function ChessboardParent({fen}) {
+    const game = new Chess(fen);
 
     useEffect(() => {
         const board = new Chessboard(document.getElementById("board1"), {
-                position: FEN.start
+                position: game.fen()
             })
     }, [])
     
     return (
-        <div>
+        <div className='w-[400px] h-[400px]'>
             <div id="board1">
                 
             </div>
