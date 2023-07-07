@@ -6,8 +6,9 @@ import "./cm-chessboard.css"
 import { Chess } from 'chess.js';
 
 
-function ChessboardParent({fen}) {
-    const game = new Chess(fen);
+function ChessboardParent({ fen }) {
+    
+    const game = new Chess();
 
     useEffect(() => {
         const board = new Chessboard(document.getElementById("board1"), {

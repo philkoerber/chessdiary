@@ -1,10 +1,49 @@
-import ChessboardParent from "./ChessboardParent";
+import GamePlayer from "./GamePlayer";
 
-export default function Home() {
-  const arandomfen = "1B5K/4P3/5p1R/1p1p2P1/1P5P/2P4N/q6p/1kn5 w - - 0 1"
+const fetchTopGamesByPosition = async () => {
+  try {
+        const response = await fetch(
+          'https://explorer.lichess.ovh/masters?play=d2d4'
+        );
+        const data = await response.json();
+    return ({
+      opening: data.opening,
+      topGames: data.topGames
+        });
+      } catch (error) {
+        console.log('Error fetching games data:', error);
+      }
+}
+
+const fetchGameById = async (id) => {
+  try {
+    const response = await fetch(
+      `https://lichess.org/game/export/${id}?pgnInJson=true`,
+      {
+        headers: {
+          Accept: 'application/json'
+        }
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('Error fetching game data:', error);
+  }
+};
+
+export default async function Home() {
+
+  const data = await fetchTopGamesByPosition()
+  const game = await fetchGameById(data.topGames[0].id)
+
+  console.log(game)
+
+
+  const arandomfen = ""
   return (
     <main className="">
-      <ChessboardParent fen={arandomfen} />
+      <GamePlayer game={game} />
     </main>
   )
 }
