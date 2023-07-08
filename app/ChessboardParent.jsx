@@ -8,13 +8,15 @@ import { Chess } from 'chess.js';
 
 function ChessboardParent({ fen }) {
     
-    const game = new Chess();
+    const game = new Chess(fen);
 
     useEffect(() => {
-        const board = new Chessboard(document.getElementById("board1"), {
+         const board = new Chessboard(document.getElementById("board1"), {
                 position: game.fen()
-            })
-    }, [])
+         })
+        
+    }, [fen])
+
     
     return (
         <div className='w-[400px] h-[400px]'>

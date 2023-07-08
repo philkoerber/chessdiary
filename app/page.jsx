@@ -35,12 +35,8 @@ const fetchGameById = async (id) => {
 export default async function Home() {
 
   const data = await fetchTopGamesByPosition()
-  const game = await fetchGameById(data.topGames[0].id)
+  const game = await fetchGameById(data.topGames[2].id)
 
-  console.log(game)
-
-
-  const arandomfen = ""
   return (
     <main className="">
       <GamePlayer game={game} />
