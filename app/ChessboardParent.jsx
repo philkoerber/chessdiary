@@ -1,30 +1,33 @@
 "use client"
 
-import React, { useEffect } from 'react';
-import { Chessboard, FEN, INPUT_EVENT_TYPE, MOVE_INPUT_MODE, COLOR } from "cm-chessboard"
-import "./cm-chessboard.css"
+import React, { useEffect, useRef } from 'react';
+import { Chessboard } from 'cm-chessboard';
+import './cm-chessboard.css';
 import { Chess } from 'chess.js';
 
+function ChessboardParent({ fen, boardId }) {
+  const game = new Chess(fen);
+    const boardRef = useRef(null); // Create a ref for the Chessboard instance
 
-function ChessboardParent({ fen }) {
     
-    const game = new Chess(fen);
 
+  useEffect(() => {
+    const board = new Chessboard(document.getElementById(boardId), {
+      position: game.fen(),
+    });
+    boardRef.current = board; // Store the Chessboard instance in the ref
+  }, []);
+    
     useEffect(() => {
-         const board = new Chessboard(document.getElementById("board1"), {
-                position: game.fen()
-         })
-        
-    }, [fen])
+      boardRef.current.setPosition(fen, true)
+  },[fen])
 
-    
-    return (
-        <div className='w-[400px] h-[400px]'>
-            <div id="board1">
-                
-            </div>
-        </div>
-    );
+  return (
+    <div className='w-full h-full'>
+      <div id={boardId}></div>
+      
+    </div>
+  );
 }
 
 export default ChessboardParent;
