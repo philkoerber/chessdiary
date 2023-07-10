@@ -3,7 +3,7 @@ import React from 'react';
 function MyGames(props) {
     return (
         <div>
-            myGames
+            myGames...
         </div>
     );
 }
