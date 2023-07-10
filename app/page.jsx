@@ -32,21 +32,27 @@ const fetchGameById = async (id) => {
   }
 };
 
+
+
 export default async function Home() {
 
   const data = await fetchTopGamesByPosition()
-  const game = await fetchGameById(data.topGames[2].id)
-  const game2 = await fetchGameById(data.topGames[8].id)
-  const game3 = await fetchGameById(data.topGames[1].id)
-  
 
+  const gamePromises = data.topGames.map(async (game) => {
+    const fetchedGame = await fetchGameById(game.id);
+    return fetchedGame;
+  });
+
+  const games = await Promise.all(gamePromises);
 
   return (
     <main className="m-4">
-      <div className="flex flex-col justify-center items-center gap-3">
-        <GamePlayer game={game} boardId={1} />
-        <GamePlayer game={game2} boardId={2} />
-        <GamePlayer game={game3} boardId={3}/>
+      <div className="flex flex-col justify-center items-center gap-6">
+        {games.map((game, i) => {
+          return (
+            <GamePlayer game={game} boardId={"featuredBoard" + i}/>
+          )
+        })}
       </div>
       
       
