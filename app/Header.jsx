@@ -1,4 +1,5 @@
 import React from 'react';
+import {BiUserCircle} from "react-icons/bi"
 
 function Header() {
     return (
@@ -7,7 +8,7 @@ function Header() {
                 <div>
                     <h1 className="text-white text-2xl font-bold">Chess Web App</h1>
                 </div>
-                <div className="space-x-8">
+                <div className="space-x-8 flex justify-center items-center">
                     <a
                         href="/"
                         className="text-white hover:text-gray-300"
@@ -30,7 +31,7 @@ function Header() {
                         href="/profile"
                         className="text-white hover:text-gray-300"
                     >
-                        Profile
+                        <BiUserCircle className='text-5xl'/>
                     </a>
                 </div>
             </div>

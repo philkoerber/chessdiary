@@ -65,7 +65,9 @@ function GamePlayer({ game, boardId }) {
           
           
           <div className='flex-1 flex items-center'>
-            <div className=''>P</div>
+            <div className="h-8 w-8 rounded-md flex justify-center items-center bg-white cursor-pointer">
+              
+            </div>
           </div>
           
           
