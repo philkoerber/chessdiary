@@ -33,7 +33,6 @@ function GamePlayer({ game, boardId }) {
 
     return () => clearTimeout(timer); // Cleanup the timer when the component unmounts
   }, [currentTurn]);
-    console.log(game)
 
     
 
