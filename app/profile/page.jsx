@@ -11,7 +11,7 @@ const getUser = async () => {
 }
 
 async function Profile(props) {
-    const data = await getUser();
+    // const data = await getUser();
     // console.log(data)
 
     return (
