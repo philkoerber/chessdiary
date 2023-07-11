@@ -36,6 +36,7 @@ const fetchGameById = async (id) => {
 
 export default async function Home() {
 
+
   const data = await fetchTopGamesByPosition()
 
   const gamePromises = data.topGames.map(async (game) => {
