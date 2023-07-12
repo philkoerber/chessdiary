@@ -6,12 +6,12 @@ import './cm-chessboard.css';
 import { Chess } from 'chess.js';
 
 function ChessboardParent({ fen, boardId }) {
-  const game = new Chess(fen);
-    const boardRef = useRef(null); // Create a ref for the Chessboard instance
+  const boardRef = useRef(null); // Create a ref for the Chessboard instance
 
     
 
   useEffect(() => {
+    const game = new Chess(fen);
     const board = new Chessboard(document.getElementById(boardId), {
       position: game.fen(),
     });

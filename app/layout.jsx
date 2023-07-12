@@ -1,7 +1,6 @@
 
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Provider from "./Provider"
 
 import Header from './Header'
 
@@ -17,11 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body className="bg-gray-500">
-        <Provider>
+       
         <Header />
         
         {children}
-      </Provider>
+    
         
       </body>
     </html>
